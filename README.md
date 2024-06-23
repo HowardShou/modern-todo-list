@@ -1,36 +1,64 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## How to run the source code
 
-First, run the development server:
+First, install packages:
+
+```bash
+npm install
+# or
+pnpm install
+```
+
+Second, run the development server:
 
 ```bash
 npm run dev
 # or
-yarn dev
-# or
 pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Overview
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### `public/`
 
-## Learn More
+- Contains static files such as images and icons.
 
-To learn more about Next.js, take a look at the following resources:
+### `src/app/`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `favicon.ico`: The favicon for the application.
+- `globals.css`: Global CSS styles for the application.
+- `layout.tsx`: Layout component that wraps the application content.
+- `page.tsx`: The main page component of the application.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### `src/components/TodoList/`
 
-## Deploy on Vercel
+- `hooks.ts`: Custom hooks used in the TodoList component.
+- `ListItem.tsx`: Component for rendering individual todo list items.
+- `Skeletons.tsx`: Skeleton loading components for the TodoList.
+- `Textarea.tsx`: Component for rendering a text area input.
+- `TodoList.tsx`: The main TodoList component.
+- `type.ts`: Type definitions used in the TodoList components.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### `src/components/ui/`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Basic components
+
+### `src/lib/`
+
+- Utility functions and custom libraries.
+
+### Configuration Files
+
+- `.eslintrc.json`: ESLint configuration file.
+- `.gitignore`: Git ignore file.
+- `.prettierrc`: Prettier configuration file.
+- `components.json`: Configuration for component generation or management.
+- `next-env.d.ts`: TypeScript definitions for Next.js.
+- `next.config.mjs`: Next.js configuration file.
+- `package-lock.json`: Lockfile for npm dependencies.
+- `package.json`: Dependencies and scripts for the project.
+- `pnpm-lock.yaml`: Lockfile for pnpm dependencies.
+- `postcss.config.js`: PostCSS configuration file.
