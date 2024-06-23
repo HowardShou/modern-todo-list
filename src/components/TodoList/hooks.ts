@@ -43,7 +43,7 @@ const listApi = async (): Promise<ListItem[]> => {
 export const useListData = () => {
   const [listData, setListData] = useState<ListItem[]>([])
   const [previousItems, setPreviousItems] = useState<ListItem[]>([])
-  const [isAsc, setIsAsc] = useState<boolean>(false)
+  const [isAsc, setIsAsc] = useState<boolean>(true)
   const [isLoading, setIsLoading] = useState<boolean | null>(null)
   const [filterInput, setFilterInput] = useState<string>('')
 
