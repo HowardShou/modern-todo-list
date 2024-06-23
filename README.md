@@ -20,6 +20,19 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Features
+
+- Can add tasks with a short description
+- Show a list of all tasks(completed/uncompleted)
+- Can set a task as completed or uncompleted
+- Can delete a task
+- Can update the task description(by long press textarea)
+- Can sort tasks by time the tasks are created
+- Can filter or search tasks
+- Make the UI responsive
+- (additional) Light mode/dark mode
+- (additional) Can undo at most 20 items which recently been deleted.
+
 ## Project Overview
 
 ### `public/`
