@@ -1,50 +1,10 @@
 import { useState, useEffect, useCallback, useMemo, ChangeEvent, useRef } from 'react'
 import { ListItem } from './type'
 
-// 模擬 API 調用
-const listApi = async (): Promise<ListItem[]> => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve([
-        { id: 1, content: 'Hi there', editable: false, checked: false, timestamp: 1719147588991 },
-        {
-          id: 2,
-          content: 'long press me can edit item',
-          editable: false,
-          checked: false,
-          timestamp: 1719147588992,
-        },
-        {
-          id: 3,
-          content: 'Press "Toggle delete" button will show delete buttons~',
-          editable: false,
-          checked: false,
-          timestamp: 1719147588993,
-        },
-        {
-          id: 4,
-          content: 'Undo button can recover at most 20 items which recently been deleted...',
-          editable: false,
-          checked: false,
-          timestamp: 1719147588994,
-        },
-        {
-          id: 5,
-          content: 'the recover item will back to the order it was',
-          editable: false,
-          checked: false,
-          timestamp: 1719147588995,
-        },
-      ])
-    }, 500)
-  })
-}
-
-export const useListData = () => {
-  const [listData, setListData] = useState<ListItem[]>([])
+export const useListData = ({ todos }: { todos: ListItem[] }) => {
+  const [listData, setListData] = useState<ListItem[]>(todos)
   const [previousItems, setPreviousItems] = useState<ListItem[]>([])
   const [isAsc, setIsAsc] = useState<boolean>(true)
-  const [isLoading, setIsLoading] = useState<boolean | null>(null)
   const [filterInput, setFilterInput] = useState<string>('')
 
   const filteredList = useMemo(() => {
@@ -59,15 +19,8 @@ export const useListData = () => {
   const idSet = useRef(new Set<number>())
 
   useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(true)
-      const data = await listApi()
-      setListData(data)
-      idSet.current = new Set(data.map((item) => item.id))
-      setIsLoading(false)
-    }
-    fetchData()
-  }, [])
+    idSet.current = new Set(todos.map((item) => item.id))
+  }, [todos])
 
   const generateUniqueId = useCallback((): number => {
     const newId = Math.random() * 100
@@ -155,7 +108,6 @@ export const useListData = () => {
     isAsc,
     filterInput,
     currentDisplayList,
-    isLoading,
     handleAddClick,
     handleDelete,
     handleEdit,

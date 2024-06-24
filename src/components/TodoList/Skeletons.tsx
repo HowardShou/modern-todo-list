@@ -1,6 +1,6 @@
 import { Skeleton } from '@/components/ui/skeleton'
 export const TodoListSkeleton: React.FC = () => {
-  const config = new Array(5).fill({
+  const config = new Array(7).fill({
     container: 'flex items-center gap-2 mb-3',
     contentLeft: 'w-6 h-6',
     contentRight: 'w-full h-20',

@@ -6,13 +6,17 @@ import { TodoListSkeleton } from './Skeletons'
 import { useListData } from './hooks'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import { ListItem as ListItemType } from '@/components/TodoList/type'
 
-export const TodoList: React.FC = () => {
+interface TodoListProps {
+  todos: ListItemType[]
+}
+
+export const TodoList: React.FC<TodoListProps> = ({ todos }) => {
   const {
     isAsc,
     filterInput,
     currentDisplayList,
-    isLoading,
     handleAddClick,
     handleDelete,
     handleEdit,
@@ -21,11 +25,10 @@ export const TodoList: React.FC = () => {
     changeHandler,
     handleSort,
     handleSearch,
-  } = useListData()
+  } = useListData({ todos })
   const [isDeleting, setIsDeleting] = useState<boolean>(false)
 
   const renderList = () => {
-    if (isLoading || isLoading === null) return <TodoListSkeleton />
     if (currentDisplayList.length === 0)
       return <p className="text-center text-2xl font-bold">Nothing to show</p>
     return currentDisplayList.map((item) => (
@@ -42,7 +45,7 @@ export const TodoList: React.FC = () => {
   }
 
   return (
-    <div className="relative bg-white dark:bg-black rounded-lg w-1/2 min-w-[320px] h-fit">
+    <>
       <Input
         className="mb-3"
         type="text"
@@ -63,6 +66,6 @@ export const TodoList: React.FC = () => {
         </Button>
       </div>
       <ul className="list">{renderList()}</ul>
-    </div>
+    </>
   )
 }
